@@ -1,4 +1,12 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/assets/js/custom.project.management.js": "/assets/js/custom.project.management.js",
+    "/assets/js/jquery.min.js": "/assets/js/jquery.min.js",
+    "/assets/js/script.js": "/assets/js/script.js",
+    "/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js": "/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js",
+    "/css/app.css": "/css/app.css",
+    "/assets/bootstrap/css/bootstrap.min.css": "/assets/bootstrap/css/bootstrap.min.css",
+    "/assets/css/style.css": "/assets/css/style.css",
+    "/assets/fonts/icofont/icofont.min.css": "/assets/fonts/icofont/icofont.min.css",
+    "/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.css": "/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.css"
 }

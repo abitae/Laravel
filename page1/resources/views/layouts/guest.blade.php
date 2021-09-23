@@ -7,18 +7,26 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+        <link rel="shortcut icon" href="{{ asset('assets/img/favicon.png') }}">
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+	    <link rel="stylesheet" href="{{ asset('assets/fonts/icofont/icofont.min.css') }}">
+	    <link rel="stylesheet" href="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.css') }}">
+	    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+   
+        <link rel="stylesheet" href="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.css') }}">
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+	    <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+	    <script src="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+	    <script src="{{ asset('assets/js/script.js') }}"></script>
 
-        <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="{{ asset('assets/plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
+	    <script src="{{ asset('assets/plugins/sweetalert2/sweetalerts.js') }}"></script>
+
     </head>
-    <body>
-        <div class="font-sans text-gray-900 antialiased">
-            {{ $slot }}
-        </div>
+    <body>       
+            {{ $slot }} 
+            <footer class="footer style--two">Powered by<a href="https://www.abelarana.com/">Abel Arana</a></footer>      
     </body>
 </html>

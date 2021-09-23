@@ -1,217 +1,176 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
-    <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
-                    </a>
-                </div>
-
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-jet-nav-link>
-                </div>
-            </div>
-
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
-                <!-- Teams Dropdown -->
-                @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                    <div class="ml-3 relative">
-                        <x-jet-dropdown align="right" width="60">
-                            <x-slot name="trigger">
-                                <span class="inline-flex rounded-md">
-                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition">
-                                        {{ Auth::user()->currentTeam->name }}
-
-                                        <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                        </svg>
-                                    </button>
-                                </span>
-                            </x-slot>
-
-                            <x-slot name="content">
-                                <div class="w-60">
-                                    <!-- Team Management -->
-                                    <div class="block px-4 py-2 text-xs text-gray-400">
-                                        {{ __('Manage Team') }}
-                                    </div>
-
-                                    <!-- Team Settings -->
-                                    <x-jet-dropdown-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
-                                        {{ __('Team Settings') }}
-                                    </x-jet-dropdown-link>
-
-                                    @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
-                                        <x-jet-dropdown-link href="{{ route('teams.create') }}">
-                                            {{ __('Create New Team') }}
-                                        </x-jet-dropdown-link>
-                                    @endcan
-
-                                    <div class="border-t border-gray-100"></div>
-
-                                    <!-- Team Switcher -->
-                                    <div class="block px-4 py-2 text-xs text-gray-400">
-                                        {{ __('Switch Teams') }}
-                                    </div>
-
-                                    @foreach (Auth::user()->allTeams() as $team)
-                                        <x-jet-switchable-team :team="$team" />
-                                    @endforeach
-                                </div>
-                            </x-slot>
-                        </x-jet-dropdown>
-                    </div>
-                @endif
-
-                <!-- Settings Dropdown -->
-                <div class="ml-3 relative">
-                    <x-jet-dropdown align="right" width="48">
-                        <x-slot name="trigger">
-                            @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                                <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                                    <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
-                                </button>
-                            @else
-                                <span class="inline-flex rounded-md">
-                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
-                                        {{ Auth::user()->name }}
-
-                                        <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                        </svg>
-                                    </button>
-                                </span>
-                            @endif
-                        </x-slot>
-
-                        <x-slot name="content">
-                            <!-- Account Management -->
-                            <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Manage Account') }}
-                            </div>
-
-                            <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
-                            </x-jet-dropdown-link>
-
-                            @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                                <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
-                                    {{ __('API Tokens') }}
-                                </x-jet-dropdown-link>
-                            @endif
-
-                            <div class="border-t border-gray-100"></div>
-
-                            <!-- Authentication -->
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-
-                                <x-jet-dropdown-link href="{{ route('logout') }}"
-                                         onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                    {{ __('Log Out') }}
-                                </x-jet-dropdown-link>
-                            </form>
-                        </x-slot>
-                    </x-jet-dropdown>
-                </div>
-            </div>
-
-            <!-- Hamburger -->
-            <div class="-mr-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-jet-responsive-nav-link>
-        </div>
-
-        <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="flex items-center px-4">
-                @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                    <div class="flex-shrink-0 mr-3">
-                        <img class="h-10 w-10 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
-                    </div>
-                @endif
-
-                <div>
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-                </div>
-            </div>
-
-            <div class="mt-3 space-y-1">
-                <!-- Account Management -->
-                <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                    {{ __('Profile') }}
-                </x-jet-responsive-nav-link>
-
-                @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                    <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
-                        {{ __('API Tokens') }}
-                    </x-jet-responsive-nav-link>
-                @endif
-
-                <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <x-jet-responsive-nav-link href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                    this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-jet-responsive-nav-link>
-                </form>
-
-                <!-- Team Management -->
-                @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                    <div class="border-t border-gray-200"></div>
-
-                    <div class="block px-4 py-2 text-xs text-gray-400">
-                        {{ __('Manage Team') }}
-                    </div>
-
-                    <!-- Team Settings -->
-                    <x-jet-responsive-nav-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}" :active="request()->routeIs('teams.show')">
-                        {{ __('Team Settings') }}
-                    </x-jet-responsive-nav-link>
-
-                    @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
-                        <x-jet-responsive-nav-link href="{{ route('teams.create') }}" :active="request()->routeIs('teams.create')">
-                            {{ __('Create New Team') }}
-                        </x-jet-responsive-nav-link>
-                    @endcan
-
-                    <div class="border-t border-gray-200"></div>
-
-                    <!-- Team Switcher -->
-                    <div class="block px-4 py-2 text-xs text-gray-400">
-                        {{ __('Switch Teams') }}
-                    </div>
-
-                    @foreach (Auth::user()->allTeams() as $team)
-                        <x-jet-switchable-team :team="$team" component="jet-responsive-nav-link" />
-                    @endforeach
-                @endif
-            </div>
-        </div>
-    </div>
-</nav>
+<nav class="sidebar" data-trigger="scrollbar">
+				<div class="sidebar-header d-none d-lg-block">
+					<div class="sidebar-toogle-pin"><i class="icofont-tack-pin"></i></div>
+				</div>
+				<div class="sidebar-body">
+					<ul class="nav">
+						<li class="nav-category">Main</li>
+						<li class="active"><a href="index.html"><i class="icofont-pie-chart"></i> <span class="link-title">Dashboard</span></a></li>
+						<li><a href="#"><i class="icofont-shopping-cart"></i> <span class="link-title">Ecommerce</span></a>
+							<ul class="nav sub-menu">
+								<li><a href="pages/ecommerce/ecommerce.html">Dashboard 1</a></li>
+								<li><a href="pages/ecommerce/ecommerce2.html">dashboard 2</a></li>
+								<li><a href="pages/ecommerce/orders.html">orders</a></li>
+								<li><a href="pages/ecommerce/product-catelog.html">Products Catalog</a></li>
+								<li><a href="pages/ecommerce/product-details.html">Product Details</a></li>
+								<li><a href="pages/ecommerce/cartlist.html">cart list</a></li>
+							</ul>
+						</li>
+						<li><a href="pages/social-media.html"><i class="icofont-chart-histogram"></i> <span class="link-title">Social Media Analytics</span></a></li>
+						<li class="nav-category">apps</li>
+						<li><a href="#"><i class="icofont-mail-box"></i> <span class="link-title">Email</span></a>
+							<ul class="nav sub-menu">
+								<li><a href="pages/apps/email/inbox.html">Inbox</a></li>
+								<li><a href="pages/apps/email/read.html">Read</a></li>
+								<li><a href="pages/apps/email/compose.html">Compose</a></li>
+							</ul>
+						</li>
+						<li><a href="pages/apps/chat.html"><i class="icofont-wechat"></i> <span class="link-title">Chat</span></a></li>
+						<li><a href="#"><i class="icofont-listing-box"></i> <span class="link-title">To Do List</span></a>
+							<ul class="nav sub-menu">
+								<li><a href="pages/apps/todolist/todolist.html">Tasks</a></li>
+								<li><a href="pages/apps/todolist/add-new.html">add new</a></li>
+								<li><a href="pages/apps/todolist/task-details.html">details</a></li>
+							</ul>
+						</li>
+						<li><a href="pages/apps/calendar.html"><i class="icofont-calendar"></i> <span class="link-title">Calendar</span></a></li>
+						<li><a href="#"><i class="icofont-file-document"></i> <span class="link-title">invoice</span></a>
+							<ul class="nav sub-menu">
+								<li><a href="pages/apps/invoice/invoice-list.html">Invoice List</a></li>
+								<li><a href="pages/apps/invoice/invoice-details.html">details</a></li>
+								<li><a href="pages/apps/invoice/invoice-add-new.html">add new</a></li>
+							</ul>
+						</li>
+						<li><a href="#"><i class="icofont-contact-add"></i> <span class="link-title">contact</span></a>
+							<ul class="nav sub-menu">
+								<li><a href="pages/apps/contact/contact-list.html">list view</a></li>
+								<li><a href="pages/apps/contact/contact-grid.html">grid view</a></li>
+							</ul>
+						</li>
+						<li><a href="#"><i class="icofont-calendar"></i> <span class="link-title">project manager</span></a>
+							<ul class="nav sub-menu">
+								<li><a href="pages/apps/project-manager/project.html">project status</a></li>
+								<li><a href="pages/apps/project-manager/task-list.html">task list</a></li>
+								<li><a href="pages/apps/project-manager/create-new.html">create new Board</a></li>
+							</ul>
+						</li>
+						<li><a href="#"><i class="icofont-files-stack"></i> <span class="link-title">file manager</span></a>
+							<ul class="nav sub-menu">
+								<li><a href="pages/apps/file-manager/file-info.html">file info</a></li>
+								<li><a href="pages/apps/file-manager/share.html">share</a></li>
+								<li><a href="pages/apps/file-manager/upload.html">upload new file</a></li>
+							</ul>
+						</li>
+						<li class="nav-category">UI Elements</li>
+						<li><a href="pages/ui-elements/widget.html"><i class="icofont-magic-alt"></i> <span class="link-title">widgets</span></a></li>
+						<li><a href="#"><i class="icofont-brand-icofont"></i> <span class="link-title">Icons (Aniloan)</span></a>
+							<ul class="nav sub-menu">
+								<li><a href="pages/ui-elements/icons/iconfont.html">ico font</a></li>
+								<li><a href="pages/ui-elements/icons/materializeicon.html">Materialize Icons</a></li>
+								<li><a href="pages/ui-elements/icons/et-lineicon.html">Et-Line Icons</a></li>
+								<li><a href="pages/ui-elements/icons/eleganticon.html">Elegant Icons</a></li>
+								<li><a href="pages/ui-elements/icons/pe-7strokeicon.html">Pe-7 Stroke Icons</a></li>
+								<li><a href="pages/ui-elements/icons/themifyicon.html">Themify Icons</a></li>
+							</ul>
+						</li>
+						<li><a href="pages/ui-elements/color.html"><i class="icofont-eye-dropper"></i> <span class="link-title">color</span></a></li>
+						<li><a href="pages/ui-elements/extra-component.html"><i class="icofont-plus"></i> <span class="link-title">extra Component</span></a></li>
+						<li class="nav-category">Form & Table</li>
+						<li><a href="#"><i class="icofont-table"></i> <span class="link-title">Form Elements</span></a>
+							<ul class="nav sub-menu">
+								<li><a href="pages/form%26table/form-elements/base-input.html">Base Input</a></li>
+								<li><a href="pages/form%26table/form-elements/input-group.html">Input Groups</a></li>
+								<li><a href="pages/form%26table/form-elements/checkbox.html">Checkbox</a></li>
+								<li><a href="pages/form%26table/form-elements/radio.html">radio</a></li>
+								<li><a href="pages/form%26table/form-elements/switch.html">Switch</a></li>
+								<li><a href="pages/form%26table/form-elements/number-input.html">Number Input</a></li>
+								<li><a href="pages/form%26table/form-elements/textarea.html">Text Area</a></li>
+								<li><a href="pages/form%26table/form-elements/text-editor.html">Text Editor (Quill Editor)</a></li>
+								<li><a href="pages/form%26table/form-elements/file-uploader.html">File Uploader</a></li>
+								<li><a href="pages/form%26table/form-elements/datetime-picker.html">Date & Time Picker</a></li>
+							</ul>
+						</li>
+						<li><a href="pages/form%26table/form-layout.html"><i class="icofont-layout"></i> <span class="link-title">Form Layout</span></a></li>
+						<li><a href="pages/form%26table/form-wizard.html"><i class="icofont-ui-file"></i> <span class="link-title">Form Wizard</span></a></li>
+						<li><a href="pages/form%26table/form-validation.html"><i class="icofont-exclamation-circle"></i> <span class="link-title">Form Validation</span></a></li>
+						<li><a href="pages/form%26table/form-repeater.html"><i class="icofont-meeting-add"></i> <span class="link-title">Form Repeater</span></a></li>
+						<li><a href="pages/form%26table/table.html"><i class="icofont-table"></i> <span class="link-title">Table</span></a></li>
+						<li><a href="pages/form%26table/table-extended.html"><i class="icofont-contact-add"></i> <span class="link-title">Table Extended</span></a></li>
+						<li class="nav-category">pages</li>
+						<li><a href="#"><i class="icofont-ui-user"></i> <span class="link-title">User Profile</span></a>
+							<ul class="nav sub-menu">
+								<li><a href="pages/pages/user-profile/news-feed.html">News Feed</a></li>
+								<li><a href="pages/pages/user-profile/about.html">about</a></li>
+								<li><a href="pages/pages/user-profile/gallery.html">gallery</a></li>
+								<li><a href="pages/pages/user-profile/connection.html">Connections</a></li>
+								<li><a href="pages/pages/user-profile/profile-chat.html">Chat</a></li>
+								<li><a href="pages/pages/user-profile/edit-profile.html">Edit Profile</a></li>
+								<li><a href="pages/pages/user-profile/user-dashboard.html">User Dashboard</a></li>
+							</ul>
+						</li>
+						<li><a href="pages/pages/faq.html"><i class="icofont-support-faq"></i> <span class="link-title">FAQ</span></a></li>
+						<li><a href="pages/pages/price.html"><i class="icofont-price"></i> <span class="link-title">Pricing</span></a></li>
+						<li><a href="pages/pages/timeline.html"><i class="icofont-clock-time"></i> <span class="link-title">Timeline</span></a></li>
+						<li><a href="pages/pages/account-setting.html"><i class="icofont-settings-alt"></i> <span class="link-title">Account Settings</span></a></li>
+						<li><a href="#"><i class="icofont-check-circled"></i> <span class="link-title">Authentication</span></a>
+							<ul class="nav sub-menu">
+								<li><a href="pages/pages/authentication/login.html">Log In</a></li>
+								<li><a href="pages/pages/authentication/register.html">Register</a></li>
+								<li><a href="pages/pages/authentication/forget-pass.html">Forget Password</a></li>
+								<li><a href="pages/pages/authentication/reset-pass.html">Reset Password</a></li>
+							</ul>
+						</li>
+						<li><a href="#"><i class="icofont-exclamation-tringle"></i> <span class="link-title">Miscellaneous</span></a>
+							<ul class="nav sub-menu">
+								<li><a href="pages/pages/miscellaneous/comming-soon.html">Coming Soon</a></li>
+								<li><a href="pages/pages/miscellaneous/404.html">404 Error</a></li>
+								<li><a href="pages/pages/miscellaneous/500.html">500 Error</a></li>
+								<li><a href="pages/pages/miscellaneous/page-not-authorized.html">Not Authorized</a></li>
+								<li><a href="pages/pages/miscellaneous/maintenance.html">Maintenance</a></li>
+								<li><a href="pages/pages/miscellaneous/session-timeout.html">Session Timeout</a></li>
+							</ul>
+						</li>
+						<li class="nav-category">Chart & Maps</li>
+						<li><a href="#"><i class="icofont-chart-pie-alt"></i> <span class="link-title">charts</span></a>
+							<ul class="nav sub-menu">
+								<li><a href="pages/charts/apex.html">Apex</a></li>
+								<li><a href="pages/charts/chartjs.html">Chartjs</a></li>
+								<li><a href="pages/charts/morrischart.html">Morris Chart</a></li>
+								<li><a href="pages/charts/flotchart.html">Flot Chart</a></li>
+								<li><a href="pages/charts/chartist.html">Chartist Chart</a></li>
+								<li><a href="pages/charts/c3-chart.html">C3 Chart</a></li>
+							</ul>
+						</li>
+						<li class="nav-category">Extensions</li>
+						<li><a href="pages/extensions/sweet-alert.html"><i class="icofont-notification"></i> <span class="link-title">Sweet Alert</span></a></li>
+						<li><a href="pages/extensions/toastr.html"><i class="icofont-dice"></i> <span class="link-title">Toastr</span></a></li>
+						<li><a href="pages/extensions/noui-slider.html"><i class="icofont-filter"></i> <span class="link-title">NoUi Slider</span></a></li>
+						<li><a href="pages/extensions/dragdrop.html"><i class="icofont-drag"></i> <span class="link-title">Drag & Drop</span></a></li>
+						<li><a href="pages/extensions/tour.html"><i class="icofont-education"></i> <span class="link-title">Tour</span></a></li>
+						<li><a href="pages/extensions/swiper.html"><i class="icofont-swoosh-right"></i> <span class="link-title">Swiper</span></a></li>
+						<li><a href="pages/extensions/treeview.html"><i class="icofont-tree-alt"></i> <span class="link-title">Treeview</span></a></li>
+						<li><a href="pages/extensions/block-ui.html"><i class="icofont-card"></i> <span class="link-title">Block-UI</span></a></li>
+						<li><a href="pages/extensions/media-player.html"><i class="icofont-multimedia"></i> <span class="link-title">Media Player</span></a></li>
+						<li><a href="pages/extensions/i18n.html"><i class="icofont-globe"></i> <span class="link-title">i18n</span></a></li>
+						<li class="nav-category">others</li>
+						<li><a href="#"><i class="icofont-navigation-menu"></i> <span class="link-title">Menu Levels</span></a>
+							<ul class="nav sub-menu">
+								<li><a href="#">Second Level 01</a>
+									<ul class="nav sub-menu">
+										<li><a href="#">Third Level 01</a></li>
+										<li><a href="#">Third Level 02</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Second Level 02</a>
+									<ul class="nav sub-menu">
+										<li><a href="#">Third Level 01</a></li>
+										<li><a href="#">Third Level 02</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li><a href="#" class="disabled"><i class="icofont-not-allowed"></i> <span class="link-title">Disable Menu</span></a></li>
+						<li class="nav-category">Support</li>
+					</ul>
+				</div>
+			</nav>
