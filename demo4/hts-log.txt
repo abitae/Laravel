@@ -1,0 +1,52 @@
+HTTrack3.49-2+htsswf+htsjava launched on Fri, 24 Sep 2021 19:48:06 at https://nsdbytes.com/template/osam/index.html +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://nsdbytes.com/template/osam/index.html -O1 "D:\Plantillas\12" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+19:48:10	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/favicon.ico (from https://nsdbytes.com/template/osam/index.html)
+19:55:21	Warning: 	Retry after error -4 (Incorrect length (77380 Bytes, 99703 expected)) at link https://nsdbytes.com/template/osam/landing/assets/img/hero-1.png (from https://nsdbytes.com/template/osam/landing/index.html)
+19:55:31	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/light/cropped.jpg (from https://nsdbytes.com/template/osam/light/forms-cropping.html)
+19:55:39	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/assets/images/details_open.png (from https://nsdbytes.com/template/osam/light/table-jquery-datatable.html)
+19:55:39	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/assets/images/details_close.png (from https://nsdbytes.com/template/osam/light/table-jquery-datatable.html)
+19:55:48	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/light/GET (from https://nsdbytes.com/template/osam/light/assets/bundles/vendorscripts.bundle.js)
+19:55:48	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/light/Error pJS - No image.src (from https://nsdbytes.com/template/osam/light/assets/bundles/vendorscripts.bundle.js)
+19:55:48	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/assets/images/logo.svg (from https://nsdbytes.com/template/osam/light/assets/bundles/mainscripts.bundle.js)
+19:55:49	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/dark/cropped.jpg (from https://nsdbytes.com/template/osam/dark/forms-cropping.html)
+19:55:50	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/dark/GET (from https://nsdbytes.com/template/osam/dark/assets/bundles/vendorscripts.bundle.js)
+19:55:50	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/dark/Error pJS - No image.src (from https://nsdbytes.com/template/osam/dark/assets/bundles/vendorscripts.bundle.js)
+19:55:51	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/fluid/cropped.jpg (from https://nsdbytes.com/template/osam/fluid/forms-cropping.html)
+19:55:52	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/fluid/GET (from https://nsdbytes.com/template/osam/fluid/assets/bundles/vendorscripts.bundle.js)
+19:55:52	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/fluid/Error pJS - No image.src (from https://nsdbytes.com/template/osam/fluid/assets/bundles/vendorscripts.bundle.js)
+19:55:53	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/hmenu/cropped.jpg (from https://nsdbytes.com/template/osam/hmenu/forms-cropping.html)
+19:55:54	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/hmenu/GET (from https://nsdbytes.com/template/osam/hmenu/assets/bundles/vendorscripts.bundle.js)
+19:55:54	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/hmenu/Error pJS - No image.src (from https://nsdbytes.com/template/osam/hmenu/assets/bundles/vendorscripts.bundle.js)
+19:55:54	Warning: 	Retry after error -4 (Incorrect length (77380 Bytes, 93633 expected)) at link https://nsdbytes.com/template/osam/landing/assets/fonts/LineIcons.svg?tc3uo0 (from https://nsdbytes.com/template/osam/landing/assets/fonts/line-icons.css)
+19:55:54	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/landing/assets/css/owl.video.play.png (from https://nsdbytes.com/template/osam/landing/assets/css/owl.carousel.min.css)
+19:55:55	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/landing/GET (from https://nsdbytes.com/template/osam/landing/assets/js/particles.min.js)
+19:55:55	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/landing/Error pJS - No image.src (from https://nsdbytes.com/template/osam/landing/assets/js/particles.min.js)
+19:55:55	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/light/get (from https://nsdbytes.com/template/osam/assets/vendor/cropper/cropper.min.js)
+19:55:55	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/light/image/ (from https://nsdbytes.com/template/osam/assets/vendor/summernote/dist/summernote.js)
+19:55:55	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/light/trident/ (from https://nsdbytes.com/template/osam/assets/vendor/ckeditor/ckeditor.js)
+19:55:55	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/light/applewebkit/ (from https://nsdbytes.com/template/osam/assets/vendor/ckeditor/ckeditor.js)
+19:55:55	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/light/adobeair/ (from https://nsdbytes.com/template/osam/assets/vendor/ckeditor/ckeditor.js)
+19:55:55	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/light/contents.css (from https://nsdbytes.com/template/osam/assets/vendor/ckeditor/ckeditor.js)
+19:55:55	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/light/plugins/ (from https://nsdbytes.com/template/osam/assets/vendor/ckeditor/ckeditor.js)
+19:55:55	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/light/styles.js (from https://nsdbytes.com/template/osam/assets/vendor/ckeditor/ckeditor.js)
+19:55:55	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/light/chrome/ (from https://nsdbytes.com/template/osam/assets/vendor/ckeditor/ckeditor.js)
+19:55:55	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/light/icons_hidpi.png (from https://nsdbytes.com/template/osam/assets/vendor/ckeditor/ckeditor.js)
+19:55:55	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/light/icons.png (from https://nsdbytes.com/template/osam/assets/vendor/ckeditor/ckeditor.js)
+19:55:56	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/light/ckeditor (from https://nsdbytes.com/template/osam/light/assets/js/pages/forms/editors.js)
+19:55:56	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/light/xl/worksheets/sheet1.xml (from https://nsdbytes.com/template/osam/assets/vendor/jquery-datatable/buttons/buttons.html5.min.js)
+19:55:56	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/light/xl/workbook.xml (from https://nsdbytes.com/template/osam/assets/vendor/jquery-datatable/buttons/buttons.html5.min.js)
+19:55:56	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/light/xl/styles.xml (from https://nsdbytes.com/template/osam/assets/vendor/jquery-datatable/buttons/buttons.html5.min.js)
+19:55:56	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/light/[Content_Types].xml (from https://nsdbytes.com/template/osam/assets/vendor/jquery-datatable/buttons/buttons.html5.min.js)
+19:55:56	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/light/buttons.pdf (from https://nsdbytes.com/template/osam/assets/vendor/jquery-datatable/buttons/buttons.html5.min.js)
+19:55:56	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/dark/ckeditor (from https://nsdbytes.com/template/osam/dark/assets/js/pages/forms/editors.js)
+19:55:56	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/fluid/ckeditor (from https://nsdbytes.com/template/osam/fluid/assets/js/pages/forms/editors.js)
+19:55:56	Error: 	"Not Found" (404) at link https://nsdbytes.com/template/osam/hmenu/ckeditor (from https://nsdbytes.com/template/osam/hmenu/assets/js/pages/forms/editors.js)
+
+HTTrack Website Copier/3.49-2 mirror complete in 7 minutes 51 seconds : 651 links scanned, 609 files written (25746842 bytes overall) [11455538 bytes received at 24321 bytes/sec], 24675422 bytes transferred using HTTP compression in 569 files, ratio 28%, 72.3 requests per connection
+(39 errors, 2 warnings, 0 messages)

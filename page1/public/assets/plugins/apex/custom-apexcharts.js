@@ -31,7 +31,7 @@ $(function() {
             opacity: .05
         },
         series:[ {
-            data: [10, 12, 5, 18, 11, 16]
+            data: [10, 12, 5, 18, 11, 16, 50]
         }
         ],
         yaxis: {
@@ -322,7 +322,7 @@ $(function() {
     var column_options = {
         series: [{
             name: 'Net Profit',
-            data: [44, 55, 57, 56, 61, 58, 63, 60, 66, 50, 40]
+            data: [100, 55, 57, 56, 61, 58, 63, 60, 66, 50, 40]
         }, {
             name: 'Revenue',
             data: [76, 85, 101, 98, 87, 105, 91, 114, 94, 90, 70]
