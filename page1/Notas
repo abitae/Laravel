@@ -1,6 +1,0 @@
-Creacion de liveware
-
-php artisan make:liveware ShowPrueba
-
-app/livewire/ShowPrueba
-resources/livewire/Show-prueba.php

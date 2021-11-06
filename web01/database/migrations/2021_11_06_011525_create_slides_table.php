@@ -15,11 +15,20 @@ class CreateSlidesTable extends Migration
     {
         Schema::create('slides', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
-            $table->string('ip_address', 45)->nullable();
-            $table->string('user_agent')->nullable();
-            $table->string('payload');
-            $table->string('last_activity')->index();
+            $table->string('plantilla');
+            $table->string('path_image1');
+            $table->string('path_image2');
+            $table->string('path_image3');
+            $table->string('path_image4');
+            $table->string('layer1');
+            $table->string('layer2');
+            $table->string('layer3');
+            $table->string('layer4');
+            $table->string('btn1');
+            $table->string('btn2');
+            $table->string('btn3');
+            $table->string('btn4');
+            $table->string('state');
             $table->timestamps();
         });
     }
