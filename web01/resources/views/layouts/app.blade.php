@@ -37,23 +37,9 @@
                     <ul class="navbar-nav mr-auto">
 						<!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
-                            <a href="{{ url('/clients') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Clients</a> 
+                            <a href="{{ url('/configs') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Configs</a> 
                         </li>
-						<li class="nav-item">
-                            <a href="{{ url('/feedbacks') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Feedbacks</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/prices') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Prices</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/services') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Services</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/slots') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Slots</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/slides') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Slides</a> 
-                        </li>
+						
                     </ul>
 					@endauth()
 					

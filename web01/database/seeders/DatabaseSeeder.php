@@ -3,7 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-
+use App\models\User;
+use App\models\Config;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -12,7 +13,8 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        // \App\Models\User::factory(10)->create();
+    { 
+        User::factory(10)->create();
+        Config::factory(1)->create();
     }
 }
