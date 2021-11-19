@@ -1,0 +1,31 @@
+|instalacion
+composer create-project laravel/laravel blog
+|instalacion de jetstream
+composer require laravel/jetstream
+|install livewere
+php artisan jetstream:install livewire
+|creacion de base da datos and codes
+||npm i and npm run dev
+||php artisan migrate
+|
+creacion de modelos y migrate
+php artisan make:model Category -m
+php artisan make:model Post -m
+*creacion de relaciones y llaves foraneas en migraciones y modelos
+*relacion polimorfica
+
+|creacion factories
+
+php artisan make:factory CategoryFactory
+php artisan make:factory PostFactory
+php artisan make:factory TagFactory
+php artisan make:factory ImageFactory
+
+|cambio de 'default' => env('FILESYSTEM_DRIVER', 'public') para subir imagenes
+
+|creacion de sseder user
+creacion de carpeta post
+
+agregar a faker
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);//nueva línea
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);//nueva línea
